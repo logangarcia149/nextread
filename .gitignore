@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Raw / generated data
+data/raw/
+data/ingest/
+data/dashboard/
+*.csv
+
+# Local environment files
+.env
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+
+# Internal Documenation
+Coordination.txt
+
+# Source datasets / third-party source files
+source/

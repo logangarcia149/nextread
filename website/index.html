@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextRead | Analytics Portfolio Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Analytics Portfolio Project</p>
+
+      <h1>NextRead</h1>
+
+      <h2>Personalized Book Recommendation Analytics</h2>
+
+      <p class="hero-summary">
+        A recommendation analytics project using SQL, Python, clustering,
+        model validation, and Tableau to identify books that perform
+        especially well for readers with similar preferences.
+      </p>
+
+      <div class="hero-actions">
+        <a
+          href="https://public.tableau.com/views/NextRead-PersonalizedBookRecommendations/NextReadRecommendations?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
+          class="button button-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View Interactive Dashboard
+        </a>
+
+        <a href="#" class="button button-secondary">
+          View GitHub Repository
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="overview">
+      <h2>Project Overview</h2>
+
+      <p>
+        <strong>NextRead</strong> is an end-to-end analytics portfolio project
+        demonstrating how raw data can be transformed into a usable, validated
+        decision-support product.
+      </p>
+
+      <p>
+        Using a dataset of book ratings, reader behavior, and genre information,
+        I built a PostgreSQL analytics environment, cleaned and modeled the data
+        with SQL, used Python to identify reader segments, developed a
+        recommendation methodology, validated the results against a simpler
+        baseline, and published the final output through an interactive Tableau
+        dashboard and public website.
+      </p>
+
+      <p>
+        The project demonstrates the full analytical workflow: defining a problem,
+        creating reliable data structures, applying analytical methods, validating
+        results, optimizing performance, documenting decisions, and translating
+        technical analysis into accessible information.
+      </p>
+
+      <h3>Skills Demonstrated</h3>
+
+      <ul>
+        <li>PostgreSQL and advanced SQL</li>
+        <li>Data cleaning, validation, and quality assurance</li>
+        <li>Staging, intermediate, and reporting-layer data models</li>
+        <li>CTEs, window functions, aggregation, ranking, and percentile analysis</li>
+        <li>Python, pandas, scikit-learn, and K-Means clustering</li>
+        <li>Analytical validation and baseline comparison</li>
+        <li>Tableau Public dashboard development</li>
+        <li>Git/GitHub and project organization</li>
+        <li>Public-facing technical documentation and web publishing</li>
+      </ul>
+    </section>
+
+    <section id="business-problem">
+      <h2>Business Problem</h2>
+
+      <p>
+        Recommendation systems often rely heavily on a user's existing preferences.
+        While this can produce familiar recommendations, it may repeatedly suggest
+        books similar to what a reader already knows.
+      </p>
+
+      <blockquote>
+        Can readers be grouped by broader rating behavior and preferences, then use
+        the behavior of similar readers to identify books they may rate highly—even
+        when those books fall outside their usual choices?
+      </blockquote>
+
+      <p>
+        The analysis needed to account for differences in how readers use rating
+        scales, variation in genre preferences, the amount of evidence supporting
+        each recommendation, and whether the recommendation method performed better
+        than a simpler global approach.
+      </p>
+
+      <p>
+        NextRead addresses these challenges using normalized reader behavior,
+        genre preferences, reader segmentation, segment-level book performance,
+        evidence thresholds, and held-out validation.
+      </p>
+
+      <p>
+        The final product allows users to select the reader profile that most
+        closely resembles their preferences and explore ranked recommendations
+        through an interactive Tableau dashboard.
+      </p>
+
+      <div class="callout">
+        <h3>Public-Sector Relevance</h3>
+        <p>
+          Although NextRead uses book-rating data, the analytical workflow is
+          transferable to government and program environments: integrating multiple
+          data sources, validating data quality, defining meaningful population
+          segments, developing performance measures, testing analytical assumptions,
+          documenting methodology, and presenting results through an accessible
+          public-facing dashboard.
+        </p>
+      </div>
+    </section>
+
+    <section id="dashboard">
+      <h2>Interactive Tableau Dashboard</h2>
+
+      <p>
+        Explore the final NextRead recommendation tool. Select the reader profile
+        that best reflects your preferences and adjust the number of recommendations
+        displayed.
+      </p>
+
+      <div class="dashboard-card">
+        <h3>NextRead Personalized Recommendations</h3>
+
+        <p>
+          This dashboard presents the public-facing output of the recommendation
+          pipeline while the SQL, Python, validation, and optimization work is
+          documented throughout this case study.
+        </p>
+
+        <div class="tableau-embed">
+
+          <div class='tableauPlaceholder' id='viz1789677097271' style='position: relative'>
+            <noscript>
+              <a href='#'>
+                <img
+                  alt='NextRead Personalized Book Recommendations'
+                  src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;NextRead-PersonalizedBookRecommendations&#47;NextReadRecommendations&#47;1_rss.png'
+                  style='border: none'
+                />
+              </a>
+            </noscript>
+
+            <object class='tableauViz' style='display:none;'>
+              <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+              <param name='embed_code_version' value='3' />
+              <param name='site_root' value='' />
+              <param name='name' value='NextRead-PersonalizedBookRecommendations&#47;NextReadRecommendations' />
+              <param name='tabs' value='no' />
+              <param name='toolbar' value='yes' />
+              <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ne&#47;NextRead-PersonalizedBookRecommendations&#47;NextReadRecommendations&#47;1.png' />
+              <param name='animate_transition' value='yes' />
+              <param name='display_static_image' value='yes' />
+              <param name='display_spinner' value='yes' />
+              <param name='display_overlay' value='yes' />
+              <param name='display_count' value='yes' />
+              <param name='language' value='en-US' />
+            </object>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="data-architecture">
+      <h2>Data Architecture</h2>
+
+      <p>
+        NextRead uses a layered PostgreSQL architecture to separate source data,
+        cleaning, analytical transformations, and business-ready outputs. This
+        makes the workflow easier to validate, troubleshoot, and extend while
+        keeping reporting logic separate from raw-data preparation.
+      </p>
+
+      <div class="architecture-flow">
+        <strong>Raw</strong>
+        <span>→</span>
+        <strong>Staging</strong>
+        <span>→</span>
+        <strong>Intermediate</strong>
+        <span>→</span>
+        <strong>Mart</strong>
+      </div>
+
+      <h3>Database Layers</h3>
+
+      <p>
+        <strong>Raw:</strong> Preserves imported source data as closely as
+        possible, providing a traceable ingestion layer for investigating
+        source-quality issues.
+      </p>
+
+      <p>
+        <strong>Staging:</strong> Cleans and standardizes the source data,
+        including validation, invalid-value handling, duplicate review, and
+        preparation of reliable analytical fields.
+      </p>
+
+      <p>
+        <strong>Intermediate:</strong> Contains reusable analytical
+        transformations such as reader behavior, genre preferences, normalized
+        ratings, clustering features, segment-level book performance, and
+        recommendation candidates.
+      </p>
+
+      <p>
+        <strong>Mart:</strong> Contains finalized outputs designed for reporting
+        and decision use, including reader segments, ranked recommendations,
+        validation summaries, and Tableau-facing views.
+      </p>
+
+      <h3>Analytical Flow</h3>
+
+      <pre>
+    Raw Ratings + Books + Tags
+                ↓
+          Cleaned Staging Data
+                ↓
+    Reader Behavior + Genre Profiles
+                ↓
+        Reader Segmentation
+                ↓
+    Segment-Level Book Performance
+                ↓
+    Strong Recommendation Candidates
+                ↓
+        Ranked Recommendations
+                ↓
+        Tableau Dashboard
+      </pre>
+
+      <h3>Examples of Key Data Products</h3>
+
+      <ul>
+        <li><code>staging.stg_ratings</code> — cleaned reader-book ratings</li>
+        <li><code>intermediate.int_reader_rating_behavior</code> — reader-level rating behavior</li>
+        <li><code>intermediate.int_reader_preferences</code> — reader-by-genre preference measures</li>
+        <li><code>intermediate.int_segment_book_performance</code> — book performance within each reader segment</li>
+        <li><code>mart.reader_segments</code> — final reader segment assignments</li>
+        <li><code>mart.segment_recommendations</code> — ranked recommendation output</li>
+        <li><code>mart.dashboard_recommendations</code> — simplified Tableau reporting view</li>
+      </ul>
+
+      <div class="callout">
+        <h3>Why This Design Matters</h3>
+        <p>
+          The layered architecture separates data preparation from analytical
+          logic and presentation. This supports traceability, quality assurance,
+          repeatable reporting, and easier maintenance—principles that transfer
+          directly to public-sector analytical and reporting environments.
+        </p>
+      </div>
+    </section>
+
+    <section id="sql">
+      <h2>SQL & Data Transformation</h2>
+
+      <p>
+        SQL was the primary transformation layer for NextRead. PostgreSQL was
+        used to clean source data, create reusable analytical features, measure
+        reader and segment behavior, generate recommendation candidates, rank
+        books, and prepare reporting-ready views for Tableau.
+      </p>
+
+      <p>
+        The workflow emphasized traceability and reusable transformations rather
+        than placing complex analytical logic directly in the dashboard.
+      </p>
+
+      <h3>Data Cleaning & Quality Assurance</h3>
+
+      <ul>
+        <li>Validated relationships between books, ratings, tags, and readers</li>
+        <li>Identified duplicate book-tag relationships</li>
+        <li>Excluded invalid negative tag counts</li>
+        <li>Checked row counts and key uniqueness after transformations</li>
+        <li>Reconciled aggregate rating totals with source data</li>
+        <li>Preserved source-quality issues for traceability</li>
+      </ul>
+
+      <h3>Reader-Normalized Ratings</h3>
+
+      <p>
+        Readers use rating scales differently. To account for this, ratings were
+        evaluated relative to each reader's normal rating behavior rather than
+        relying only on raw star ratings.
+      </p>
+
+      <pre><code>rating - reader_average_rating AS rating_deviation</code></pre>
+
+      <p>
+        This allowed the analysis to identify books that performed above a
+        reader's typical rating level.
+      </p>
+
+      <h3>Segment-Level Book Performance</h3>
+
+      <p>
+        After readers were assigned to segments, SQL aggregated book performance
+        within each group using measures such as rating count, average rating,
+        high-rating share, normalized rating deviation, and segment-specific
+        affinity lift.
+      </p>
+
+      <h3>Advanced SQL Techniques</h3>
+
+      <ul>
+        <li>Common Table Expressions (CTEs)</li>
+        <li>Window functions</li>
+        <li><code>PERCENT_RANK()</code> and <code>ROW_NUMBER()</code></li>
+        <li>Conditional and filtered aggregation</li>
+        <li>Percentile calculations</li>
+        <li><code>CORR()</code></li>
+        <li><code>NOT EXISTS</code></li>
+        <li>Multi-stage joins and aggregations</li>
+      </ul>
+
+      <p>
+        Recommendation signals were normalized within each reader segment using
+        percentile ranks:
+      </p>
+
+      <pre><code>PERCENT_RANK() OVER (
+        PARTITION BY cluster_id
+        ORDER BY segment_high_rating_share
+    ) AS high_rating_percentile</code></pre>
+
+      <h3>Performance Optimization</h3>
+
+      <p>
+        An early version of the recommendation pipeline generated approximately
+        <strong>79.9 million</strong> reader-book candidate rows. Stronger
+        evidence and quality thresholds were moved earlier in the pipeline,
+        reducing the optimized candidate table to approximately
+        <strong>12.9 million</strong> rows while maintaining recommendation
+        coverage for every reader.
+      </p>
+
+      <div class="callout">
+        <h3>83.8% Reduction in Candidate Rows</h3>
+        <p>
+          Moving filtering earlier in the pipeline reduced unnecessary downstream
+          processing without changing the recommendation objective.
+        </p>
+      </div>
+
+      <h3>Tableau Reporting Layer</h3>
+
+      <p>
+        The final Tableau dashboard does not reproduce the recommendation logic.
+        PostgreSQL instead exposes a simplified reporting view,
+        <code>mart.dashboard_recommendations</code>, containing only the fields
+        needed by the public-facing dashboard.
+      </p>
+
+      <p>
+        This keeps the presentation layer lightweight while preserving the full
+        analytical logic and validation process in the database.
+      </p>
+    </section>
+
+    <section id="python">
+      <h2>Python & Reader Segmentation</h2>
+
+      <p>
+        Python was used to prepare clustering features, evaluate multiple
+        segmentation options, and identify reader groups with distinct rating
+        and genre-preference patterns.
+      </p>
+
+      <p>
+        The objective was not simply to produce mathematically distinct clusters.
+        The resulting segments also needed to be understandable enough to support
+        recommendation logic and meaningful enough to explain to real users.
+      </p>
+
+      <h3>Feature Preparation</h3>
+
+      <p>
+        Reader-level analytical features were created in PostgreSQL, exported,
+        and prepared in Python using pandas and scikit-learn.
+      </p>
+
+      <ul>
+        <li>Rating count</li>
+        <li>Average rating</li>
+        <li>Rating variability</li>
+        <li>High-rating share</li>
+        <li>Preference spread</li>
+        <li>Genre-preference features across 18 genres</li>
+      </ul>
+
+      <p>
+        Missing genre-preference values were treated as zero, representing no
+        observed preference signal for that genre. Features were then standardized
+        with <code>StandardScaler</code> so variables measured on different scales
+        contributed more evenly to clustering.
+      </p>
+
+      <div class="callout">
+        <h3>Clustering Dataset</h3>
+        <p>
+          <strong>53,424 readers</strong> represented by
+          <strong>23 analytical features</strong>.
+        </p>
+      </div>
+
+      <h3>Evaluating the Number of Clusters</h3>
+
+      <p>
+        K-Means models were evaluated across multiple values of <code>k</code>
+        rather than selecting a cluster count arbitrarily.
+      </p>
+
+      <p>
+        The evaluation considered silhouette score, inertia, cluster-size balance,
+        interpretability, and whether additional clusters produced distinctions
+        that were useful for downstream recommendation decisions.
+      </p>
+
+      <p>
+        Although lower values of <code>k</code> produced slightly stronger
+        silhouette scores, those solutions created broader groups that were less
+        useful for explaining differences in reader behavior. A five-cluster
+        solution provided a stronger balance between statistical defensibility and
+        practical interpretability.
+      </p>
+
+      <h3>Final Reader Profiles</h3>
+
+      <ul>
+        <li><strong>Visual & Imaginative</strong></li>
+        <li><strong>Open-Minded Explorer</strong></li>
+        <li><strong>Thoughtful & Selective</strong></li>
+        <li><strong>Fantasy & Beyond</strong></li>
+        <li><strong>History & Real-World Stories</strong></li>
+      </ul>
+
+      <p>
+        The database retains the original analytical segment labels and cluster
+        identifiers. User-facing names and descriptions were created separately
+        for Tableau so the profiles would be easier for a general audience to
+        understand.
+      </p>
+
+      <h3>Real-World Review</h3>
+
+      <p>
+        Statistical clustering does not automatically guarantee that the resulting
+        groups will make sense to people who actually read, recommend, or discuss
+        books.
+      </p>
+
+      <p>
+        To check the practical relevance of the profiles, I discussed the segment
+        characteristics with active readers and people who work in libraries.
+        These conversations focused on whether the identified preference patterns
+        appeared recognizable and whether the segment descriptions felt plausible
+        as real reading profiles.
+      </p>
+
+      <p>
+        This qualitative review was used as a reasonableness check rather than as a
+        replacement for statistical validation. The feedback supported retaining
+        the five-profile structure and helped inform the clearer user-facing names
+        and descriptions used in the Tableau dashboard.
+      </p>
+
+      <div class="callout">
+        <h3>Why This Matters</h3>
+        <p>
+          The segmentation process combined quantitative evidence from reader
+          behavior with qualitative review from people familiar with reading habits
+          and book recommendations. This helped ensure that the final profiles were
+          both analytically defensible and understandable to a public audience.
+        </p>
+      </div>
+    </section>
+
+    <section id="recommendation-model">
+      <h2>Recommendation Methodology</h2>
+
+      <p>
+        After reader segments were established, NextRead measured how books
+        performed within each segment and compared that performance with how the
+        same books performed across all readers.
+      </p>
+
+      <p>
+        The objective was to identify books that were not only highly rated, but
+        that showed evidence of being especially well suited to a particular
+        reader group.
+      </p>
+
+      <h3>Segment-Level Book Performance</h3>
+
+      <p>
+        For each reader-segment and book combination, PostgreSQL calculated:
+      </p>
+
+      <ul>
+        <li>Segment rating count</li>
+        <li>Average segment rating</li>
+        <li>Share of ratings that were 4 or 5 stars</li>
+        <li>Average reader-normalized rating deviation</li>
+        <li>Overall book performance across all readers</li>
+        <li>Segment-specific performance lift</li>
+      </ul>
+
+      <p>
+        This allowed the model to distinguish between books that were broadly
+        popular and books that performed unusually well among a specific type of
+        reader.
+      </p>
+
+      <h3>Controlling for Reader Generosity</h3>
+
+      <p>
+        Raw ratings were not sufficient because some reader groups were naturally
+        more generous than others. Ratings were therefore evaluated relative to
+        each reader's own average rating behavior.
+      </p>
+
+      <pre><code>rating_deviation =
+    rating - reader_average_rating</code></pre>
+
+      <p>
+        A positive deviation indicates that a reader rated a book higher than they
+        typically rate books overall.
+      </p>
+
+      <h3>Segment-Specific Affinity</h3>
+
+      <p>
+        NextRead compared normalized book performance within each segment with
+        normalized performance across all readers.
+      </p>
+
+      <pre><code>segment_specific_affinity =
+    segment_normalized_performance
+    - overall_normalized_performance</code></pre>
+
+      <p>
+        This helped identify books that performed unusually well for a specific
+        reader group instead of simply rewarding books with universally high
+        ratings.
+      </p>
+
+      <h3>Evidence Thresholds</h3>
+
+      <p>
+        Books were required to meet minimum evidence and quality requirements
+        before entering the final ranking process.
+      </p>
+
+      <ul>
+        <li>At least 75 ratings from the segment</li>
+        <li>Positive normalized segment performance</li>
+        <li>Positive segment-specific affinity</li>
+        <li>Segment-relative quality thresholds</li>
+      </ul>
+
+      <p>
+        Segment-relative thresholds were used because more generous and more
+        selective reader groups have different rating distributions.
+      </p>
+
+      <h3>Final Recommendation Score</h3>
+
+      <p>
+        The final ranking used two primary signals:
+      </p>
+
+      <ol>
+        <li>
+          <strong>High-Rating Percentile:</strong>
+          how strongly the book performed in 4–5 star ratings within the segment.
+        </li>
+        <li>
+          <strong>Affinity Percentile:</strong>
+          how unusually well the book performed for that segment compared with
+          readers overall.
+        </li>
+      </ol>
+
+      <pre><code>PERCENT_RANK() OVER (
+        PARTITION BY cluster_id
+        ORDER BY segment_high_rating_share
+    )</code></pre>
+
+      <pre><code>PERCENT_RANK() OVER (
+        PARTITION BY cluster_id
+        ORDER BY normalized_affinity_lift
+    )</code></pre>
+
+      <p>
+        The initial ranking model applied equal weight to the two signals:
+      </p>
+
+      <div class="callout">
+        <h3>Recommendation Score</h3>
+        <p>
+          50% High-Rating Percentile
+          +
+          50% Segment Affinity Percentile
+        </p>
+      </div>
+
+      <p>
+        The 50/50 weighting was treated as a practical modeling assumption rather
+        than a proven optimal weighting and was later evaluated through held-out
+        validation.
+      </p>
+
+      <h3>Separating Evidence from Popularity</h3>
+
+      <p>
+        Rating count was used as an evidence requirement rather than as a ranking
+        bonus. This prevents highly popular books from automatically outranking
+        less popular books simply because they have more ratings.
+      </p>
+
+      <p>
+        Popularity determines whether enough evidence exists; performance
+        determines how strongly a book ranks.
+      </p>
+
+      <h3>Recommendation Output</h3>
+
+      <p>
+        Final ranked recommendations are stored in
+        <code>mart.segment_recommendations</code> and exposed to Tableau through
+        <code>mart.dashboard_recommendations</code>.
+      </p>
+
+      <p>
+        The public dashboard allows users to select the reader profile that best
+        matches them and view the top 10, 25, 50, or 100 recommendations.
+      </p>
+    </section>
+
+    <section id="validation">
+      <h2>Model Validation</h2>
+
+      <p>
+        NextRead was evaluated using a deterministic
+        <strong>80/20 train-test split</strong> of the ratings data.
+      </p>
+
+      <p>
+        The training portion was used to rebuild the downstream recommendation
+        pipeline, including segment-level book performance, candidate selection,
+        recommendation scoring, and ranked segment recommendations. The test
+        portion was held out and used only for evaluation.
+      </p>
+
+      <h3>Held-Out Evaluation</h3>
+
+      <p>
+        A recommendation was counted as a hit when a reader had at least one
+        held-out book rated 4 or 5 stars appear within the model's Top N
+        recommendations for that reader's segment.
+      </p>
+
+      <div class="callout">
+        <h3>53,341 Readers Evaluated</h3>
+        <p>
+          Performance was measured at Top 10, 25, 50, and 100 recommendation
+          cutoffs.
+        </p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Top N</th>
+            <th>NextRead Hit Rate</th>
+            <th>Global Baseline</th>
+            <th>Relative Performance</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>10</td>
+            <td>4.96%</td>
+            <td>1.31%</td>
+            <td>3.79×</td>
+          </tr>
+
+          <tr>
+            <td>25</td>
+            <td>12.59%</td>
+            <td>2.39%</td>
+            <td>5.27×</td>
+          </tr>
+
+          <tr>
+            <td>50</td>
+            <td>21.80%</td>
+            <td>5.48%</td>
+            <td>3.98×</td>
+          </tr>
+
+          <tr>
+            <td>100</td>
+            <td>39.57%</td>
+            <td>10.03%</td>
+            <td>3.94×</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Baseline Comparison</h3>
+
+      <p>
+        The baseline ranked books globally using training-data performance rather
+        than reader segments. This tested whether segmentation added predictive
+        value beyond simply recommending books that performed well overall.
+      </p>
+
+      <p>
+        NextRead outperformed the global baseline at every cutoff, providing
+        evidence that segment-specific behavior contributes useful recommendation
+        signal.
+      </p>
+
+      <h3>Validation Limitation</h3>
+
+      <p>
+        The validation was intentionally designed as a practical downstream test
+        rather than a full rebuild of the entire clustering pipeline.
+      </p>
+
+      <p>
+        Reader segment assignments were held fixed during validation and had
+        originally been created using the full dataset. This introduces some
+        residual information leakage at the segmentation stage.
+      </p>
+
+      <p>
+        The results therefore support the usefulness of the segment-based ranking
+        method, but should not be interpreted as a fully independent end-to-end
+        validation of the complete clustering and recommendation pipeline.
+      </p>
+
+      <div class="callout">
+        <h3>Analytical Practice</h3>
+        <p>
+          Validation results are presented together with their limitations so that
+          performance claims remain transparent and appropriately scoped.
+        </p>
+      </div>
+    </section>
+
+    <section id="optimization">
+      <h2>Performance Optimization</h2>
+
+      <p>
+        As the recommendation pipeline developed, one of the largest performance
+        challenges came from expanding segment-level recommendation candidates to
+        individual readers.
+      </p>
+
+      <p>
+        An early version of the pipeline generated approximately
+        <strong>79.9 million reader-book candidate rows</strong>. The logic was
+        analytically valid, but the candidate pool was much broader than necessary
+        for downstream ranking.
+      </p>
+
+      <h3>Identifying the Bottleneck</h3>
+
+      <p>
+        The original process applied permissive evidence requirements before
+        expanding books to individual readers. This removed clearly weak books but
+        still allowed thousands of candidates per segment into the reader-level
+        transformation.
+      </p>
+
+      <p>
+        Rather than optimizing the large reader-level table after it had already
+        been created, stronger filtering was moved upstream to the segment-book
+        level.
+      </p>
+
+      <h3>Profiling Before Choosing Thresholds</h3>
+
+      <p>
+        Candidate distributions were profiled separately for each reader segment
+        using measures including rating count, high-rating share, normalized
+        rating deviation, and segment-specific affinity.
+      </p>
+
+      <p>
+        Because the five reader groups showed different rating distributions,
+        segment-relative thresholds were used instead of one universal quality
+        cutoff.
+      </p>
+
+      <ul>
+        <li>At least 75 ratings from the segment</li>
+        <li>High-rating share at or above the segment candidate median</li>
+        <li>Normalized rating deviation at or above the segment candidate median</li>
+        <li>Affinity lift at or above the segment candidate median</li>
+      </ul>
+
+      <h3>Reducing the Candidate Pool</h3>
+
+      <p>
+        The stronger eligibility rules produced
+        <strong>1,254 strong segment-book candidates</strong> before reader-level
+        expansion.
+      </p>
+
+      <p>
+        Candidates were then joined only to readers in the relevant segment, while
+        books already rated by each reader were excluded with
+        <code>NOT EXISTS</code>.
+      </p>
+
+      <div class="callout">
+        <h3>83.8% Reduction in Candidate Rows</h3>
+
+        <p>
+          Earlier design:
+          <strong>79,876,587 rows</strong>
+        </p>
+
+        <p>
+          Optimized design:
+          <strong>12,912,585 rows</strong>
+        </p>
+      </div>
+
+      <h3>Preserving Reader Coverage</h3>
+
+      <p>
+        Performance improvements were evaluated together with recommendation
+        coverage to ensure that reducing the candidate table did not undermine the
+        analytical objective.
+      </p>
+
+      <ul>
+        <li>Minimum candidates per reader: <strong>104</strong></li>
+        <li>Average candidates per reader: <strong>241.7</strong></li>
+        <li>Maximum candidates per reader: <strong>356</strong></li>
+        <li>Readers without candidates: <strong>0</strong></li>
+      </ul>
+
+      <p>
+        The optimized pipeline therefore reduced downstream processing
+        substantially while preserving recommendation coverage for every reader.
+      </p>
+
+      <h3>Optimization Principle</h3>
+
+      <blockquote>
+        Reduce unnecessary data before expensive downstream expansion rather than
+        processing a very large dataset and filtering it afterward.
+      </blockquote>
+
+      <p>
+        Moving stronger filtering upstream reduced the amount of data processed by
+        later joins, scoring calculations, and reporting transformations.
+      </p>
+
+      <h3>Pipeline Structure</h3>
+
+      <pre><code>Segment-Book Performance
+            ↓
+    Strong Segment Candidates
+            ↓
+    Reader Candidate Expansion
+            ↓
+    Recommendation Scoring
+            ↓
+    Reporting Mart</code></pre>
+
+      <div class="callout">
+        <h3>Public-Sector Relevance</h3>
+
+        <p>
+          The same design principle applies to large administrative and program
+          datasets: identify the records necessary for the analytical question
+          before performing expensive joins or transformations. Efficient data
+          pipelines improve maintainability and resource use while preserving the
+          information required for decision-making.
+        </p>
+      </div>
+    </section>
+
+    <section id="outcomes">
+      <h2>Key Findings & Project Outcomes</h2>
+
+      <p>
+        NextRead demonstrates a complete analytics workflow from raw data
+        ingestion through public-facing delivery. The project combines SQL,
+        Python, statistical analysis, validation, optimization, Tableau,
+        Git/GitHub, and web publishing into one end-to-end portfolio product.
+      </p>
+
+      <h3>Key Findings</h3>
+
+      <ul>
+        <li>
+          Reader behavior differed meaningfully across five segments, both in
+          genre preference and in how generously or selectively readers used
+          rating scales.
+        </li>
+
+        <li>
+          Reader-normalized ratings improved the recommendation logic by
+          accounting for differences in individual rating behavior.
+        </li>
+
+        <li>
+          Segment-specific affinity helped distinguish books that performed
+          unusually well for a reader group from books that were simply popular
+          overall.
+        </li>
+
+        <li>
+          NextRead outperformed the global recommendation baseline at every
+          tested cutoff.
+        </li>
+
+        <li>
+          At Top 25, NextRead achieved a <strong>12.59% hit rate</strong>
+          compared with <strong>2.39%</strong> for the baseline, approximately
+          <strong>5.27× the baseline performance</strong>.
+        </li>
+
+        <li>
+          Upstream filtering reduced reader-book candidate rows from approximately
+          <strong>79.9 million to 12.9 million</strong>, an
+          <strong>83.8% reduction</strong>, while preserving recommendation
+          coverage for every reader.
+        </li>
+
+        <li>
+          Discussions with active readers and people working in libraries
+          supported the practical plausibility of the reader profiles produced
+          through clustering.
+        </li>
+      </ul>
+
+      <h3>Project Outcomes</h3>
+
+      <ul>
+        <li>Layered PostgreSQL analytical database</li>
+        <li>Cleaned and validated source data</li>
+        <li>Reusable SQL transformation and reporting layers</li>
+        <li>Python-based reader segmentation</li>
+        <li>Segment-based recommendation model</li>
+        <li>Held-out model validation</li>
+        <li>Performance optimization</li>
+        <li>Interactive Tableau Public dashboard</li>
+        <li>Public-facing technical documentation</li>
+        <li>Custom portfolio website</li>
+        <li>Version-controlled project prepared for GitHub</li>
+      </ul>
+
+      <h3>Skills Demonstrated</h3>
+
+      <p>
+        <strong>SQL & PostgreSQL:</strong>
+        Data modeling, cleaning, validation, joins, CTEs, window functions,
+        percentile analysis, aggregation, ranking, optimization, and reporting
+        views.
+      </p>
+
+      <p>
+        <strong>Python:</strong>
+        Data preparation, feature scaling, K-Means clustering, model comparison,
+        and reader-segment interpretation using pandas and scikit-learn.
+      </p>
+
+      <p>
+        <strong>Analytics:</strong>
+        Problem definition, metric design, segmentation, recommendation
+        methodology, baseline comparison, held-out validation, performance
+        analysis, and documentation of limitations.
+      </p>
+
+      <p>
+        <strong>Tableau:</strong>
+        Interactive filters, parameters, recommendation lists, tooltips,
+        user-facing descriptions, and public dashboard design.
+      </p>
+
+      <p>
+        <strong>Technical Communication:</strong>
+        Translating analytical methods into accessible explanations for
+        nontechnical audiences and publishing results through a public website.
+      </p>
+
+      <p>
+        <strong>Project Development:</strong>
+        Git/GitHub, organized project structure, iterative testing,
+        documentation, and reproducible workflow design.
+      </p>
+
+      <div class="callout">
+        <h3>Public-Sector Relevance</h3>
+
+        <p>
+          Although NextRead uses book-recommendation data, the workflow is directly
+          transferable to public-sector analytics: integrating multiple datasets,
+          validating data quality, defining meaningful population groups,
+          developing performance measures, testing analytical assumptions,
+          improving processing efficiency, documenting limitations, and presenting
+          results in an accessible format for decision-makers and the public.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>NextRead Analytics Portfolio Project</p>
+    </div>
+  </footer>
+
+  <script type='text/javascript'>
+    var divElement = document.getElementById('viz1789677097271');
+    var vizElement = divElement.getElementsByTagName('object')[0];
+
+    if (divElement.offsetWidth > 800) {
+      vizElement.style.width = '1400px';
+      vizElement.style.height = '927px';
+    } else if (divElement.offsetWidth > 500) {
+      vizElement.style.width = '1400px';
+      vizElement.style.height = '927px';
+    } else {
+      vizElement.style.width = '100%';
+      vizElement.style.height = '827px';
+    }
+
+    var scriptElement = document.createElement('script');
+    scriptElement.src =
+      'https://public.tableau.com/javascripts/api/viz_v1.js';
+
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
