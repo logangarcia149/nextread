@@ -109,7 +109,7 @@ The layered structure keeps transformation logic traceable and separates technic
 
 ### Entity Relationship Diagram
 
-![NextRead ERD](ERD/nextread_erd.png)
+![NextRead ERD](images/nextread_erd.png)
 
 ---
 
